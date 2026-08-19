@@ -11,7 +11,7 @@ pipeline{
     stage('Build'){
       steps{
         sh '''
-          echo "Buildign from: $(pwd")
+          echo "Buildign from: $(pwd)"
           ls -la
           mkdir -p output
           echo "Build completed > output/built-info.txt
