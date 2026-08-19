@@ -14,7 +14,7 @@ pipeline{
           echo "Buildign from: $(pwd)"
           ls -la
           mkdir -p output
-          echo "Build completed > output/built-info.txt
+          echo "Build completed > output/built-info.txt"
         '''
       }
     }
