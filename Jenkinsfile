@@ -10,12 +10,20 @@ pipeline{
 
     stage('Build'){
       steps{
-        echo 'Build happens here'
+        sh '''
+          echo "Buildign from: $(pwd")
+          ls -la
+          mkdir -p output
+          echo "Build completed > output/built-info.txt
+        '''
       }
     }
     stage('Test'){
       steps{
-        echo 'Testing happens here'
+        sh '''
+          test -f output/built-info.txt
+          echo 'Test passed'
+        '''
       }
     }
   }
