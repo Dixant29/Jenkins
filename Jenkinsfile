@@ -3,6 +3,13 @@ pipeline{
   environment{
     APP_NAME = 'jenkins-learning'
   }
+  parameters{
+    choice(
+      name: 'TARGET_ENV',
+      choices: ['development','staging'],
+      description: 'Where this build is intended to run'
+    )
+  }
 
   stages{
     stage('Hello'){
