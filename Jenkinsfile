@@ -45,6 +45,15 @@ pipeline{
         '''
       }
     }
+    stage('Show selected environment'){
+      steps{
+        echo "Selected environment: ${params.TARGET_ENV}"
+
+        sh '''
+          echo "Target environment: ${params.TARGET_ENV}" >> output/build-metdataa.txt
+        '''
+      }
+    }
     stage('Archive artifact'){
       steps{
         archiveArtifacts artifacts:'output/*',fingerprint: true
