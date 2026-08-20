@@ -54,6 +54,16 @@ pipeline{
         '''
       }
     }
+    stage('Staging check'){
+      when{
+        expression{
+          params.TARGET_ENV == 'staging'
+        }
+      }
+      steps{
+        echo 'Running a stage-only check'
+      }
+    }
     stage('Archive artifact'){
       steps{
         archiveArtifacts artifacts:'output/*',fingerprint: true
