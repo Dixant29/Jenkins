@@ -50,7 +50,7 @@ pipeline{
         echo "Selected environment: ${params.TARGET_ENV}"
 
         sh '''
-          echo "Target environment: ${params.TARGET_ENV}" >> output/build-metadata.txt
+          echo "Target environment: $TARGET_ENV" >> output/build-metadata.txt
         '''
       }
     }
