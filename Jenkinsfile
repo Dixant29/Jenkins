@@ -1,5 +1,8 @@
 pipeline{
   agent any
+  environment{
+    APP_NAME = 'jenkins-learning'
+  }
 
   stages{
     stage('Hello'){
@@ -7,7 +10,6 @@ pipeline{
        echo 'Hello to jenkins'
      }
     }
-
     stage('Build'){
       steps{
         sh '''
@@ -29,6 +31,16 @@ pipeline{
     stage('Archive artifact'){
       steps{
         archiveArtifacts artifacts:'output/built-info.txt',fingerprint: true
+      }
+    }
+    stage('Show build informtion'){
+      steps{
+        sh '''
+          echo "Application: $APP_NAME"
+          echo "Jenkins build number: $BUILD_NUMBER"
+          echo "Application: $APP_NAME" > output/build-metadata.txt
+          echo "Build number: $BUILD_NUMBER" >> output/build-metadata.txt
+        '''
       }
     }
   }
