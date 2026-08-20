@@ -26,6 +26,11 @@ pipeline{
         '''
       }
     }
+    stage('Archive artifact'){
+      steps{
+        archiveArtifacts artifacts:'output/built-info.txt',fingerprint: true
+      }
+    }
   }
   post{
     always{
